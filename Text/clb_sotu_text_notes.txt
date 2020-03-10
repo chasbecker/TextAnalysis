@@ -1,0 +1,25 @@
+A few notes on these state of the union text files:
+
+These files were downloaded from wikisource.org.
+
+1) Washington's first inaugural was apparently delivered in early Jan 1790, but to avoid conflict with his second I have named it "washington.1789"
+
+2) so "washington.1790" is actually his second inaugural
+
+3) wikisource is a bit confusing around madison's addresses of 1813 and 1814.  I used other sources to determine which text alignes with "madison.1812", "madison.1813", and "madison.1814".  I'm confident I got this right, but for critical applications the user should re-verify the year with the text.
+
+4) According to wikisource, Clinton's 1993 was not an official "state of the union" but rather an address to a joint session of congress.
+
+5) Likewise, Bush's 2001 was not an official "state of the union"
+
+6) Likewise, Trump's 2017 was not an official "state of the union"
+
+Technical details:
+
+I stepped through each address on wikisource: https://en.wikisource.org/wiki/Portal:State_of_the_Union_Speeches_by_United_States_Presidents
+
+At each speech, I highlighted the text, copied it, pasted it into Windows notepad, and saved as "president_year".
+
+To bring the text to plain ASCII format, I then opened each document in MS Word 365, performed a "File|Save as" to text "Plain Text (*.txt)", selecting "US-ASCII" as the encoding and checked "Allow character substitution".  When I received a warning, I sikply clicked thorugh it.
+
+Each of these files had ".txt" appeneded to the filename (which served as a handy marker when I returned from a break), so I then deleted each of the original and renamed the newly cleaned files back to their original "president_year" format.
