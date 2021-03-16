@@ -1,4 +1,8 @@
-Udated 3/21/2020
+Udated 3/15/2021
+
+I listened to President Trump's state of the union address and it seemed to me he used "I" and "me" more than is common.  So I set out to compare the "I/Me/my" to "We/Us/Our" ratio of all the presidents in our history.  It turned out that Trump's was surprisingly normal.  The two salient observations I made were that 1) Washinton and Grant were prolific with "I/me/my", and 2) halfway through FDR's 12 years in office his ratio of "I/We" dropped drastically and remained far lower than during the first half of his presidency.  I speculate that the double-dip recession of 1937-38 jolted him out of his customary patterns of speech.
+
+Methods:
 
 Python script to develop methods for handling text, word counts, and like that.
 
