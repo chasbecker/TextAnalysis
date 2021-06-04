@@ -1,6 +1,6 @@
 apiVersion: 1.0.0
 metadata:
-  name: python-jupyter-wni3g
+  name: TextAnalysis
 projects:
   - name: jupyter-hello-world
     source:
