@@ -1,6 +1,6 @@
 apiVersion: 1.0.0
 metadata:
-  generateName: python-jupyter-
+  name: python-jupyter-wni3g
 projects:
   - name: jupyter-hello-world
     source:
