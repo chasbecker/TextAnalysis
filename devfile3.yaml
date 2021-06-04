@@ -1,0 +1,47 @@
+apiVersion: 1.0.0
+metadata:
+  name: TextAnalysis-383473-1111111111111111111111111111111111
+projects:
+  - name: jupyter-hello-world
+    source:
+      startPoint: master
+      location: 'git@github.tk-online.net:DEVKI/jupyter-hello-world.git'
+      type: git
+components:
+  - reference: https://raw.githubusercontent.com/Schnittchenkraus/che-plugin-registry/main/7.31.0/v3/plugins/ms-python/python/latest/meta.yaml
+    type: chePlugin
+  #  - id: ms-python/python/latest
+  #    registryUrl: https://raw.githubusercontent.com/Schnittchenkraus/che-plugin-registry/main/7.31.0/v3/ # (Alternativ)
+  #    type: chePlugin
+  - mountSources: true
+    memoryLimit: 512Mi
+    type: dockerimage
+    volumes:
+      - name: venv
+        containerPath: /home/user/.venv
+    image: 'quay.io/eclipse/che-python-3.8:7.29.0'
+    alias: python
+commands:
+  - name: set up venv with requirements
+    actions:
+      - workdir: /home/user
+        type: exec
+        command: python -m venv .venv && . .venv/bin/activate && python -m pip install -r /projects/jupyter-hello-world/requirements.txt && echo '{"python.pythonPath":"/home/theia/.venv/bin/python3"}' > /projects/.theia/settings.json
+        # TODO: funktioniert noch nicht -> command: python3 -m venv .venv && . .venv/bin/activate && mkdir .temp && TMPDIR=.temp pip3 --no-cache-dir --disable-pip-version-check install  wheel pip-tools && TMPDIR=.temp pip-sync /projects/jupyter-hello-world/requirements.txt --pip-args "--no-cache-dir --disable-pip-version-check" && rm -rf .temp
+        component: python
+  - name: debug
+    actions:
+      - type: vscode-launch
+        referenceContent: |
+          {
+            "version": "0.2.0",
+            "configurations": [
+              {
+                "name": "Python: Current File",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "console": "integratedTerminal"
+              }
+            ]
+          }
