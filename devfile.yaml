@@ -10,9 +10,6 @@ projects:
 components:
   - reference: https://raw.githubusercontent.com/Schnittchenkraus/che-plugin-registry/main/7.31.0/v3/plugins/ms-python/python/latest/meta.yaml
     type: chePlugin
-  #  - id: ms-python/python/latest
-  #    registryUrl: https://raw.githubusercontent.com/Schnittchenkraus/che-plugin-registry/main/7.31.0/v3/ # (Alternativ)
-  #    type: chePlugin
   - mountSources: true
     memoryLimit: 512Mi
     type: dockerimage
@@ -26,8 +23,7 @@ commands:
     actions:
       - workdir: /home/user
         type: exec
-        command: python -m venv .venv && . .venv/bin/activate && python -m pip install -r /projects/jupyter-hello-world/requirements.txt && echo '{"python.pythonPath":"/home/theia/.venv/bin/python3"}' > /projects/.theia/settings.json
-        # TODO: funktioniert noch nicht -> command: python3 -m venv .venv && . .venv/bin/activate && mkdir .temp && TMPDIR=.temp pip3 --no-cache-dir --disable-pip-version-check install  wheel pip-tools && TMPDIR=.temp pip-sync /projects/jupyter-hello-world/requirements.txt --pip-args "--no-cache-dir --disable-pip-version-check" && rm -rf .temp
+        command: python -m venv .venv && . .venv/bin/activate && python -m pip install -r /projects/jupyter-hello-world/requirements.txt && echo '{"python.pythonPath":"/home/theia/.venv/bin/python3", "python.testing.pytestEnabled":true, "python.testing.pytestArgs":["--junit-xml=/projects/.pytest_cache/report.xml", "-v"], "files.exclude":{"**/.git":true, "**/.pytest_cache":true, "**/__pycache__":true, "**/*.pyc":true}}' > /projects/.theia/settings.json && mkdir /projects/jupyter-hello-world/test/__pycache__ && echo '*' > /projects/jupyter-hello-world/test/__pycache__/.gitignore
         component: python
   - name: debug
     actions:
